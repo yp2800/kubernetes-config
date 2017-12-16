@@ -1,0 +1,14 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  annotations:
+  name: node-web
+  namespace: default
+spec:
+  maxReplicas: 35
+  minReplicas: 6
+  scaleTargetRef:
+    apiVersion: extensions/v1
+    kind: Deployment
+    name: node-web
+  targetCPUUtilizationPercentage: 50
