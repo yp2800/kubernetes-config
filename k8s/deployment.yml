@@ -34,7 +34,7 @@ spec:
            # length of time to wait for a pod to initialize
            # after pod startup, before applying health checking
            initialDelaySeconds: 30
-           timeoutSeconds: 2
+           timeoutSeconds: 5
         resources:
            requests:
               cpu: "60m"
