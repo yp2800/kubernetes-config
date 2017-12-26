@@ -11,4 +11,4 @@ spec:
     apiVersion: extensions/v1
     kind: Deployment
     name: node-web
-  targetCPUUtilizationPercentage: 50
+  targetCPUUtilizationPercentage: 60
