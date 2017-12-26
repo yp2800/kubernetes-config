@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: node-web
 spec:
-  replicas: 4
+  replicas: 5
   revisionHistoryLimit: 5
   minReadySeconds: 20
   strategy:
@@ -19,12 +19,14 @@ spec:
     spec:
       containers:
       - name: node-web
-        image: richarvey/nginx-php-fpm
-        #image: tutum/apache-php
+        #image: smebberson/alpine-nginx
+        #image: richarvey/nginx-php-fpm
+        image: tutum/apache-php
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        # health checks self healing check port 80 response 200, if containers error (400-500) kubernetes restart the pod
+        # health checks self healing check port 80 response 200,
+        # if containers error (400-500) kubernetes restart the pod
         livenessProbe:
            httpGet:
              path: /
@@ -35,8 +37,8 @@ spec:
            timeoutSeconds: 2
         resources:
            requests:
-              cpu: "80m"
-              memory: "128Mi"
+              cpu: "60m"
+              memory: "20Mi"
            limits:
               cpu: "1000m"
               memory: "1024Mi"
